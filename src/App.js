@@ -10,12 +10,18 @@ class App extends Component {
      {name: 'Smith', age: 20},
      {name: 'Snitch', age: 69}
     ],
-    name: "state",
+    prompt: "Enter New Name",
     showPersons: false
   };
 
   nameHandler = (event) => {
-    this.setState({ name: event.target.value })
+    this.setState({ 
+      persons: [
+          {name: event.target.value,age: 20},
+          {name: event.target.value,age: 20},
+          {name: event.target.value,age: 20} 
+      ]
+    })
     console.log(this.state.persons)
   }
   toggleHandler = () => {
@@ -30,12 +36,11 @@ class App extends Component {
     if(this.state.showPersons){
      people = (
      <div>
-     <UserInput name={this.state.name} nameChanger={this.nameHandler} />
+     <UserInput nameChanger={this.nameHandler} />
       {/* <UserOutput name={this.state.name} /> */}
       {this.state.persons.map(person => {
         return (
         <div>
-          
           <UserOutput name={person.name} age={person.age} />
         </div>
         )
@@ -46,7 +51,7 @@ class App extends Component {
     return (
 
       <div>
-        <div>{this.state.name}</div>
+        <div>{this.state.prompt}</div>
         <button onClick={this.toggleHandler}>Toggle People</button>
         {/* {this.state.showPersons === true ? */}
           {people}
