@@ -6,7 +6,9 @@ const UserOutput = (props) => {
    <div className="UserOutput">
         <div>
             <h1>Paragraph 1</h1>
-            <p>Written by {props.name}</p>
+            {/* The html handles the onClick event keyword */}
+            <p> Written by {props.name}</p>
+            <button className="deleteButton" onClick={props.deleteChanger}>Delete Me!</button>
         </div>
         <div>
             <h1>Paragraph 2</h1>

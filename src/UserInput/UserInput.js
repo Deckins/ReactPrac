@@ -5,7 +5,7 @@ const UserInput = (props) => {
         border: '2px solid red'
     }
     return <input type="text"  style={inlineStyle}
-    onChange={props.nameChanger} />
+    onChange={props.nameChanger}  />
 
 }
 
