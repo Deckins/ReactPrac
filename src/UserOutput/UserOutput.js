@@ -1,4 +1,5 @@
 import React from 'react';
+import UserInput from '../UserInput/UserInput.js';
 import './UserOutput.css';
 
 const UserOutput = (props) => {
@@ -9,6 +10,7 @@ const UserOutput = (props) => {
             {/* The html handles the onClick event keyword */}
             <p> Written by {props.name}</p>
             <button className="deleteButton" onClick={props.deleteChanger}>Delete Me!</button>
+            <UserInput nameChanger={props.nameChanger} />
         </div>
         <div>
             <h1>Paragraph 2</h1>

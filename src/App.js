@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import UserOutput from './UserOutput/UserOutput.js';
-import UserInput from './UserInput/UserInput.js';
 import './App.css';
 
 class App extends Component {
@@ -14,15 +13,16 @@ class App extends Component {
     showPersons: false
   };
 
-  nameHandler = (event) => {
-    this.setState({ 
-      persons: [
-          {id:'424',name: event.target.value,age: 20},
-          {id:'24',name: event.target.value,age: 20},
-          {id:'44',name: event.target.value,age: 20} 
-      ]
+  nameHandler = (event,id) => {
+    const personIndex = this.state.persons.findIndex(person =>{
+        return person.id === id
     })
-    console.log(this.state.persons)
+    const person = {...this.state.persons[personIndex]}
+    person.name = event.target.value
+    const persons = [...this.state.persons]
+    persons[personIndex] = person
+    this.setState({persons:persons})
+
   }
   toggleHandler = () => {
     const currentShow = this.state.showPersons
@@ -41,14 +41,12 @@ class App extends Component {
     if(this.state.showPersons){
      people = (
      <div>
-     <UserInput nameChanger={this.nameHandler}  />
       {/* <UserOutput name={this.state.name} /> */}
       {this.state.persons.map((person,index) => {
         return (
-        
           <UserOutput deleteChanger = {() => this.deleteHandler(index)}
+            nameChanger={(event) => this.nameHandler(event,person.id)}
             name={person.name} age={person.age} key={person.id} />
-        
         )
       })}
     </div> 
