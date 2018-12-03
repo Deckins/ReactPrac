@@ -1,16 +1,12 @@
 import React from 'react';
 import UserInput from '../UserInput/UserInput.js';
-import Radium from 'radium';
 import './UserOutput.css';
 
 const UserOutput = (props) => {
-    const style ={
-        '@media (min-width: 500px)':{
-            width: '450px'
-        }
-    }
+   
+    
    return (
-   <div className="UserOutput" style={style}>
+   <div className="UserOutput" >
         <div>
             <h1>Paragraph 1</h1>
             {/* The html handles the onClick event keyword */}
@@ -26,4 +22,4 @@ const UserOutput = (props) => {
    )
 }
 
-export default Radium(UserOutput);
+export default UserOutput;
