@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserInput = (props) => {
+const PersonInput = (props) => {
     const inlineStyle ={
         border: '2px solid red'
     }
@@ -9,4 +9,4 @@ const UserInput = (props) => {
 
 }
 
-export default UserInput;
+export default PersonInput;

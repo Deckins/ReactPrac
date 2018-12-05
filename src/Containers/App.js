@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import UserOutput from './UserOutput/UserOutput.js';
-import './App.css';
+import Persons from '../Components/Persons/Persons';
+import classes from './App.css';
 
 class App extends Component {
   state = {
@@ -38,27 +38,25 @@ class App extends Component {
   render() {
     let people = null;
 
+    let btnClass =''
     if(this.state.showPersons){
      people = (
      <div>
-      {/* <UserOutput name={this.state.name} /> */}
-      {this.state.persons.map((person,index) => {
-        return (
-          <UserOutput deleteChanger = {() => this.deleteHandler(index)}
-            nameChanger={(event) => this.nameHandler(event,person.id)}
-            name={person.name} age={person.age} key={person.id} />
-        )
-      })}
+      <Persons 
+        persons={this.state.persons}
+        nameChanger={this.nameHandler}
+        deleteClick={this.deleteHandler}/>
     </div> 
      )
+     btnClass = classes.Red;
     }
 
-    const classes = [];
+    const assignedClasses = [];
     if(this.state.persons.length <= 2){
-      classes.push('red');
+      assignedClasses.push('red');
     }
     if(this.state.persons.length <= 1){
-      classes.push('bold'); 
+      assignedClasses.push('bold'); 
     }
 
     
@@ -66,11 +64,11 @@ class App extends Component {
     return (
     
       
-        <div>
+        <div className= {classes.App}>
 
           <div>{this.state.prompt}</div>
-          <p className={classes.join(' ')}>Hey Guys</p>
-          <button onClick={this.toggleHandler}>Toggle People</button>
+          <p className={assignedClasses.join(' ')}>Hey Guys</p>
+          <button className={btnClass} onClick={this.toggleHandler}>Toggle People</button>
           {/* {this.state.showPersons === true ? */}
           {people}
           {/* : null */}
